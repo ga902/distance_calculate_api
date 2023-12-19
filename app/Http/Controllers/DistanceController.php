@@ -59,7 +59,7 @@ class DistanceController extends Controller
     public function index(Request $request){
       try {
 
-        $distances = Distance::all();
+        $distances = Distance::where('is_delete','<>','1')->get();
         return response()->json(['distance'=>$distances]);
 
       } catch (\Throwable $th) {
